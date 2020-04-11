@@ -2,12 +2,9 @@ FROM centos:7
 
 RUN yum install httpd -y 
 
-WORKDIR /var/www/html
+COPY initializr /var/www/html
 
-COPY personify .
-
-ENV contenido prueba
-
-RUN echo "$contenido" > /var/www/html/prueba.html
-
+# ADD se utiliza o se recomienda para añadir URLS
+# ADD initializr /var/www/html
+ 
 CMD apachectl -DFOREGROUND
